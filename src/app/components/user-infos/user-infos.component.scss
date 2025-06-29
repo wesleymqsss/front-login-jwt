@@ -99,6 +99,19 @@
         }
     }
 
+    &__alert-message{
+        p{
+            font-size: 12px;
+        }
+
+        &--sucess{
+            color: rgb(92, 158, 70);
+        }
+        &--error{
+            color: rgb(200, 72, 72);
+        }
+    }
+
     &__buttons-container {
         display: flex;
         justify-content: space-between;
