@@ -1,6 +1,6 @@
 import { HttpEvent, HttpHandlerFn, HttpRequest } from "@angular/common/http";
 import { inject } from "@angular/core";
-import { finalize, Observable } from "rxjs";
+import { finalize, Observable, retry } from "rxjs";
 import { LoadingService } from "../service/loading.service";
 
 export function loadingInterceptor(
@@ -13,9 +13,10 @@ export function loadingInterceptor(
     loadingService.showLoading();
 
     return next(req).pipe(
+        retry(2),
         finalize(()=>{
             loadingService.hideLoading();
         })
     );
-    
+
 }
